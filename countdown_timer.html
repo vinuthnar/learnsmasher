@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Countdown Timer</title>
+  <style>
+.container{
+    background-color:skyblue;
+  max-width:30%;
+  margin:auto;
+  padding:30px;
+  border-radius:15px;
+  top:50%;
+    }
+    button{
+        color:white;
+        background-color:black;
+        padding: 4px 8px;
+        margin-left: 30px;
+    }
+    h1{
+        text-align: center;
+        font-size: 80px;
+    }
+  </style>
+</head>
+<body>
+    <div class="container">
+  <h1 id="timer">00:00:00</h1>
+  <button onclick="startTimer()">Start</button>
+  <button onclick="stopTimer()">Stop</button>
+  <button onclick="resetTimer()">Reset</button>
+  <button onclick="restartTimer()">Restart</button>
+</div>
+  <script>
+    var timerElement = document.getElementById("timer");
+    var timerInterval;
+    var timeInSeconds = 60; // Set the initial time in seconds
+
+    function startTimer() {
+      if (!timerInterval) {
+        timerInterval = setInterval(updateTimer, 1000);
+      }
+    }
+
+    function stopTimer() {
+      clearInterval(timerInterval);
+      timerInterval = null;
+    }
+
+    function resetTimer() {
+      stopTimer();
+      timeInSeconds = 60; // Reset the timer to the initial time
+      updateTimer();
+    }
+
+    function restartTimer() {
+      resetTimer();
+      startTimer();
+    }
+
+    function updateTimer() {
+      var hours = Math.floor(timeInSeconds / 3600);
+      var minutes = Math.floor((timeInSeconds % 3600) / 60);
+      var seconds = timeInSeconds % 60;
+
+      var formattedTime =
+        padNumber(hours) + ":" +
+        padNumber(minutes) + ":" +
+        padNumber(seconds);
+
+      timerElement.textContent = formattedTime;
+
+      if (timeInSeconds <= 0) {
+        stopTimer();
+        alert("Timer has finished!");
+      } else {
+        timeInSeconds--;
+      }
+    }
+
+    function padNumber(number) {
+      return String(number).padStart(2, "0");
+    }
+  </script>
+</body>
+</html>
