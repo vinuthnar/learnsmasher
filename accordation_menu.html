@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+html,body{
+background-color:rgb(217, 250, 255);
+}
+h2{
+ color:red;
+text-align:center;
+font-size: 40px;
+}
+button.accordion {
+    background-color:hotpink;
+    color: rgb(0, 0, 255);
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 25px;
+    transition: 0.4s;
+    margin:auto;
+    border-radius:15px;
+}
+
+button.accordion.active, button.accordion:hover {
+    background-color: rgb(161, 250, 255);
+}
+
+div.panel {
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+}
+p{
+    font-size: 20px!important;
+    color: black;
+    background-color: beige;
+    padding: 20px;
+}
+div.panel.show {
+    display: block !important;
+}
+</style>
+</head>
+<body>
+
+<h2>Accordion Menu</h2>
+
+<button class="accordion">What is HTML?</button>
+<div class="panel">
+  <p>Hypertext Markup Language, a standardized system for tagging text files to achieve font, colour, graphic, and hyperlink effects on World Wide Web pages.</p>
+</div>
+
+<button class="accordion">What is CSS?</button>
+<div class="panel">
+  <p>CSS stands for Cascading Style Sheets. It is a style sheet language which is used to describe the look and formatting of a document written in markup language. It provides an additional feature to HTML. It is generally used with HTML to change the style of web pages and user interfaces. It can also be used with any kind of XML documents including plain XML, SVG and XUL.</p>
+</div>
+
+<button class="accordion">What is javascript?</button>
+<div class="panel">
+  <p>JavaScript (js) is a light-weight object-oriented programming language which is used by several websites for scripting the webpages. It is an interpreted, full-fledged programming language that enables dynamic interactivity on websites when applied to an HTML document. It was introduced in the year 1995 for adding programs to the webpages in the Netscape Navigator browser</p>
+</div>
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].onclick = function(){
+        this.classList.toggle("active");
+        this.nextElementSibling.classList.toggle("show");
+  }
+}
+</script>
+
+</body>
+</html>
